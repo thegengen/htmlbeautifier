@@ -1,7 +1,7 @@
 require "shellwords"
 require "fileutils"
 
-describe "bin/htmlbeautifier" do
+describe "bin/eexbeautifier" do
   before do
     FileUtils.mkdir_p path_to("tmp")
   end

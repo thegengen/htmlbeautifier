@@ -1,4 +1,4 @@
-module HtmlBeautifier #:nodoc:
+module EexBeautifier #:nodoc:
   module VERSION #:nodoc:
     MAJOR = 1
     MINOR = 3

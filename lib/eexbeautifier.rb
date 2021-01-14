@@ -1,10 +1,10 @@
-require "htmlbeautifier/builder"
-require "htmlbeautifier/html_parser"
-require "htmlbeautifier/version"
+require "eexbeautifier/builder"
+require "eexbeautifier/html_parser"
+require "eexbeautifier/version"
 
-module HtmlBeautifier
+module EexBeautifier
   #
-  # Returns a beautified HTML/HTML+ERB document as a String.
+  # Returns a beautified HTML/HTML+Eex document as a String.
   # html must be an object that responds to +#to_s+.
   #
   # Available options are:

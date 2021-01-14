@@ -1,7 +1,7 @@
-require "htmlbeautifier/parser"
-require "htmlbeautifier/ruby_indenter"
+require "eexbeautifier/parser"
+require "eexbeautifier/elixir_indenter"
 
-module HtmlBeautifier
+module EexBeautifier
   class Builder
     DEFAULT_OPTIONS = {
       indent: "  ",
@@ -20,7 +20,7 @@ module HtmlBeautifier
       @empty = true
       @ie_cc_levels = []
       @output = output
-      @embedded_indenter = RubyIndenter.new
+      @embedded_indenter = ElixirIndenter.new
     end
 
   private

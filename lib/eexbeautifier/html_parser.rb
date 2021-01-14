@@ -1,6 +1,6 @@
-require "htmlbeautifier/parser"
+require "eexbeautifier/parser"
 
-module HtmlBeautifier
+module EexBeautifier
   class HtmlParser < Parser
     ELEMENT_CONTENT = %r{ (?:<%.*?%>|[^>])* }mx
     HTML_VOID_ELEMENTS = %r{(?:
@@ -15,7 +15,7 @@ module HtmlBeautifier
     )}mix
 
     MAPPINGS = [
-      [%r{(<%-?=?)(.*?)(-?%>)}om,
+      [%r{(<%=?)(.*?)(-?%>)}om,
        :embed],
       [%r{<!--\[.*?\]>}om,
        :open_ie_cc],

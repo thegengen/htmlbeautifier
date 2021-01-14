@@ -1,13 +1,13 @@
-require File.expand_path("../lib/htmlbeautifier/version", __FILE__)
+require File.expand_path("../lib/eexbeautifier/version", __FILE__)
 
 spec = Gem::Specification.new do |s|
-  s.name              = "htmlbeautifier"
-  s.version           = HtmlBeautifier::VERSION::STRING
-  s.summary           = "HTML/ERB beautifier"
-  s.description       = "A normaliser/beautifier for HTML that also understands embedded Ruby."
+  s.name              = "eexbeautifier"
+  s.version           = EexBeautifier::VERSION::STRING
+  s.summary           = "HTML/EEx beautifier"
+  s.description       = "A normaliser/beautifier for HTML that also understands embedded Elixir."
   s.author            = "Paul Battley"
   s.email             = "pbattley@gmail.com"
-  s.homepage          = "http://github.com/threedaymonk/htmlbeautifier"
+  s.homepage          = "http://github.com/threedaymonk/eexbeautifier"
   s.license           = "MIT"
 
   s.has_rdoc          = true
@@ -23,4 +23,3 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency "rspec", "~> 3"
   s.add_development_dependency "rubocop", "~> 0.30.0"
 end
-

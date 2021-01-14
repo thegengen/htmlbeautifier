@@ -1,7 +1,7 @@
-require "htmlbeautifier"
+require "eexbeautifier"
 
-describe HtmlBeautifier do
-  it "ignores HTML fragments in embedded ERB" do
+describe EexBeautifier do
+  it "ignores HTML fragments in embedded Eex" do
     source = code <<-END
       <div>
         <%= a[:b].gsub("\n","<br />\n") %>
@@ -288,28 +288,6 @@ describe HtmlBeautifier do
     expect(described_class.beautify(source)).to eq(expected)
   end
 
-  it "indents with hyphenated ERB tags" do
-    source = code <<-END
-      <%- if @x -%>
-      <%- @ys.each do |y| -%>
-      <p>Foo</p>
-      <%- end -%>
-      <%- elsif @z -%>
-      <hr />
-      <%- end -%>
-    END
-    expected = code <<-END
-      <%- if @x -%>
-        <%- @ys.each do |y| -%>
-          <p>Foo</p>
-        <%- end -%>
-      <%- elsif @z -%>
-        <hr />
-      <%- end -%>
-    END
-    expect(described_class.beautify(source)).to eq(expected)
-  end
-
   it "does not indent after comments" do
     source = code <<-END
       <!-- This is a comment -->
@@ -456,32 +434,6 @@ describe HtmlBeautifier do
         dolor sit<br />
         amet,<br/>
         consectetur.</p>
-    END
-    expect(described_class.beautify(source)).to eq(expected)
-  end
-
-  it "indents after control expressions without optional `do` keyword" do
-    source = code <<-END
-      <% for value in list %>
-      Lorem ipsum
-      <% end %>
-      <% until something %>
-      Lorem ipsum
-      <% end %>
-      <% while something_else %>
-      Lorem ipsum
-      <% end %>
-    END
-    expected = code <<-END
-      <% for value in list %>
-        Lorem ipsum
-      <% end %>
-      <% until something %>
-        Lorem ipsum
-      <% end %>
-      <% while something_else %>
-        Lorem ipsum
-      <% end %>
     END
     expect(described_class.beautify(source)).to eq(expected)
   end
