@@ -270,16 +270,32 @@ describe EexBeautifier do
     expect(described_class.beautify(source)).to eq(source)
   end
 
+  it "indents inside a function call" do
+    source = code <<-END
+      <!-- <%# commented out %> -->
+      <%= form_for fn f -> %>
+      Foo
+      <% end %>
+    END
+    expected = code <<-END
+      <!-- <%# commented out %> -->
+      <%= form_for fn f -> %>
+        Foo
+      <% end %>
+    END
+    expect(described_class.beautify(source)).to eq(expected)
+  end
+
   it "outdents else" do
     source = code <<-END
-      <% if @x %>
+      <% if @x do %>
       Foo
       <% else %>
       Bar
       <% end %>
     END
     expected = code <<-END
-      <% if @x %>
+      <% if @x do %>
         Foo
       <% else %>
         Bar

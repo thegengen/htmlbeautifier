@@ -1,10 +1,10 @@
 module EexBeautifier
   class ElixirIndenter
-    INDENT_KEYWORDS = %w[ if else unless for ]
+    INDENT_KEYWORDS = %w[ else ]
     OUTDENT_KEYWORDS = %w[ else end ]
     ELIXIR_INDENT  = %r{
       ^ ( #{INDENT_KEYWORDS.join("|")} )\b
-      | \b ( do | \{ ) ( \s* \| [^\|]+ \| )? $
+      | \s+ ( do | -> ) \s* $
     }xo
     ELIXIR_OUTDENT = %r{ ^ ( #{OUTDENT_KEYWORDS.join("|")} | \} ) \b }xo
 

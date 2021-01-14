@@ -24,8 +24,8 @@ describe EexBeautifier do
       </h1>
       </div>
       <div id="somethingElse"><p>Lorem Ipsum</p>
-      <% if @x %>
-      <% @ys.each do |y| %>
+      <% if @x do %>
+      <% Enum.each @ys, fn y -> %>
       <p>
       <%= h y %>
       </p>
@@ -68,8 +68,8 @@ describe EexBeautifier do
           </div>
           <div id="somethingElse">
             <p>Lorem Ipsum</p>
-            <% if @x %>
-              <% @ys.each do |y| %>
+            <% if @x do %>
+              <% Enum.each @ys, fn y -> %>
                 <p>
                   <%= h y %>
                 </p>
