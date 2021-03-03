@@ -1,12 +1,10 @@
 module EexBeautifier
   class ElixirIndenter
-    INDENT_KEYWORDS = %w[ else ]
+    INDENT_KEYWORDS = %w[ fn do else ]
     OUTDENT_KEYWORDS = %w[ else end ]
-    ELIXIR_INDENT  = %r{
-      ^ ( #{INDENT_KEYWORDS.join("|")} )\b
-      | \s+ ( do | -> ) \s* $
-    }xo
-    ELIXIR_OUTDENT = %r{ ^ ( #{OUTDENT_KEYWORDS.join("|")} | \} ) \b }xo
+
+    ELIXIR_INDENT = %r(#{INDENT_KEYWORDS.join("|")})
+    ELIXIR_OUTDENT = %r(#{OUTDENT_KEYWORDS.join("|")})
 
     def outdent?(lines)
       lines.first =~ ELIXIR_OUTDENT

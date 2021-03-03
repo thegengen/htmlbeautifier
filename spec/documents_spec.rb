@@ -32,6 +32,21 @@ describe EexBeautifier do
       <% end %>
       <% end %>
       </div>
+      <div id="cond-example">
+      <% cond do %>
+      <% x == true -> %>
+      x
+      <% y == true -> %>
+      y
+      <% true -> %>
+      z
+      <% end %>
+      </div>
+      <div id="form-example">
+      <%= form_for x, fn f -> %>
+      <%= text_field y %>
+      <% end %>
+      </div>
       <table>
       <colgroup>
       <col style="width: 50%;">
@@ -74,6 +89,21 @@ describe EexBeautifier do
                   <%= h y %>
                 </p>
               <% end %>
+            <% end %>
+          </div>
+          <div id="cond-example">
+            <% cond do %>
+              <% x == true -> %>
+              x
+              <% y == true -> %>
+              y
+              <% true -> %>
+              z
+            <% end %>
+          </div>
+          <div id="form-example">
+            <%= form_for x, fn f -> %>
+              <%= text_field y %>
             <% end %>
           </div>
           <table>
