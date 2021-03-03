@@ -47,6 +47,10 @@ describe EexBeautifier do
       <%= text_field y %>
       <% end %>
       </div>
+      <div id="word-match-example">
+      <%= render "foo" %>
+      <%= render "foo" %>
+      </div>
       <table>
       <colgroup>
       <col style="width: 50%;">
@@ -105,6 +109,10 @@ describe EexBeautifier do
             <%= form_for x, fn f -> %>
               <%= text_field y %>
             <% end %>
+          </div>
+          <div id="word-match-example">
+            <%= render "foo" %>
+            <%= render "foo" %>
           </div>
           <table>
             <colgroup>

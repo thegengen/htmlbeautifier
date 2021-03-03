@@ -27,7 +27,7 @@ module EexBeautifier
   private
 
     def dispatch(receiver)
-      _, method = @maps.find { |pattern, _| @scanner.scan(pattern) }
+      _, method = @maps.find { |pattern, _| x = @scanner.scan(pattern) }
       raise "Unmatched sequence" unless method
       receiver.__send__(method, *extract_params(@scanner))
     rescue => ex

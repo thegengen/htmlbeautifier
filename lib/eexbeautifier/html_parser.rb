@@ -15,6 +15,18 @@ module EexBeautifier
     )}mix
 
     MAPPINGS = [
+      [%r{(<pre#{ELEMENT_CONTENT}>)(.*?)(</pre>)}omi,
+       :preformatted_block],
+      [%r{(<textarea#{ELEMENT_CONTENT}>)(.*?)(</textarea>)}omi,
+       :preformatted_block],
+      [%r{</#{HTML_BLOCK_ELEMENTS}>}om,
+       :close_block_element],
+      [%r{<#{HTML_BLOCK_ELEMENTS}(?: #{ELEMENT_CONTENT})?>}om,
+       :open_block_element],
+      [%r{(\s*\r?\n\s*)+}om,
+       :new_lines],
+      [%r{[^<\n]+},
+       :text],
       [%r{(<%=?)(.*?)(-?%>)}om,
        :embed],
       [%r{<!--\[.*?\]>}om,
@@ -29,26 +41,14 @@ module EexBeautifier
        :foreign_block],
       [%r{(<style#{ELEMENT_CONTENT}>)(.*?)(</style>)}omi,
        :foreign_block],
-      [%r{(<pre#{ELEMENT_CONTENT}>)(.*?)(</pre>)}omi,
-       :preformatted_block],
-      [%r{(<textarea#{ELEMENT_CONTENT}>)(.*?)(</textarea>)}omi,
-       :preformatted_block],
       [%r{<#{HTML_VOID_ELEMENTS}(?: #{ELEMENT_CONTENT})?/?>}om,
        :standalone_element],
       [%r{<\w+(?: #{ELEMENT_CONTENT})?/>}om,
        :standalone_element],
-      [%r{</#{HTML_BLOCK_ELEMENTS}>}om,
-       :close_block_element],
-      [%r{<#{HTML_BLOCK_ELEMENTS}(?: #{ELEMENT_CONTENT})?>}om,
-       :open_block_element],
       [%r{</#{ELEMENT_CONTENT}>}om,
        :close_element],
       [%r{<#{ELEMENT_CONTENT}>}om,
-       :open_element],
-      [%r{(\s*\r?\n\s*)+}om,
-       :new_lines],
-      [%r{[^<\n]+},
-       :text]]
+       :open_element]]
 
     def initialize
       super do |p|
